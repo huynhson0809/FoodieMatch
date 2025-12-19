@@ -81,7 +81,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$providers$2e$t
 ;
 ;
 const metadata = {
-    title: "FoodieMatch - Couple's Food Decision App",
+    title: "HoneyBite - Couple's Food Decision App",
     description: "Can't decide what to eat? Let us help you find the perfect meal together!",
     generator: "v0.app",
     icons: {

@@ -45,3 +45,361 @@ It can also happen if the client has a browser extension installed which messes 
 [00:00:15.185] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
 [00:00:15.634] Browser LOG     randomPlace null
 [00:00:15.634] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:12:54.912] Server  LOG      ✓ Compiled in 329ms
+[00:14:01.478] Server  LOG      ✓ Compiled in 220ms
+[00:14:01.782] Browser LOG     randomPlace null
+[00:14:01.782] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:14:01.782] Browser LOG     randomPlace null
+[00:14:01.782] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:14:01.782] Browser LOG     randomPlace null
+[00:14:01.782] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:14:02.123] Browser LOG     randomPlace null
+[00:14:02.123] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:14:31.522] Server  LOG      ✓ Compiled in 65ms
+[00:14:31.734] Browser LOG     randomPlace null
+[00:14:31.734] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:14:31.734] Browser LOG     randomPlace null
+[00:14:31.734] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:14:31.734] Browser LOG     randomPlace null
+[00:14:31.734] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:14:32.109] Browser LOG     randomPlace null
+[00:14:32.109] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:15:07.986] Browser LOG     randomPlace null
+[00:15:07.987] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:15:11.938] Browser ERROR   Error at radius 500: {}
+[00:15:11.938] Browser LOG     randomPlace null
+[00:15:11.938] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:15:15.103] Browser ERROR   Error at radius 1000: {}
+[00:15:15.103] Browser LOG     randomPlace null
+[00:15:15.104] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:15:18.776] Browser ERROR   Error at radius 1500: {}
+[00:15:18.776] Browser LOG     randomPlace null
+[00:15:18.777] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:15:22.081] Browser ERROR   Error at radius 2000: {}
+[00:15:22.081] Browser LOG     randomPlace null
+[00:15:22.084] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:15:29.403] Browser ERROR   Error at radius 3000: {}
+[00:15:29.404] Browser LOG     randomPlace null
+[00:15:29.404] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:15:31.672] Browser LOG     randomPlace null
+[00:15:31.672] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:18:48.837] Browser LOG     randomPlace null
+[00:18:48.837] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:18:52.809] Browser ERROR   Error at radius 500: {}
+[00:18:52.809] Browser LOG     randomPlace null
+[00:18:52.809] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:18:55.819] Browser ERROR   Error at radius 1000: {}
+[00:18:55.819] Browser LOG     randomPlace null
+[00:18:55.819] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:19:00.951] Browser ERROR   Error at radius 1500: {}
+[00:19:00.951] Browser LOG     randomPlace null
+[00:19:00.951] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:19:01.871] Browser LOG     Không tìm thấy "bun bo" trong 2000m, đang mở rộng...
+[00:19:01.871] Browser LOG     randomPlace null
+[00:19:01.871] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:19:05.111] Browser LOG     randomPlace null
+[00:19:05.111] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:19:47.653] Browser LOG     randomPlace null
+[00:19:47.653] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:19:52.202] Browser ERROR   Error at radius 500: {}
+[00:19:52.202] Browser LOG     randomPlace null
+[00:19:52.202] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:19:53.140] Browser LOG     Không tìm thấy "bun bo" trong 1000m, đang mở rộng...
+[00:19:53.140] Browser LOG     randomPlace null
+[00:19:53.140] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:19:56.602] Browser ERROR   Error at radius 1500: {}
+[00:19:56.602] Browser LOG     randomPlace null
+[00:19:56.602] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:20:00.870] Browser ERROR   Error at radius 2000: {}
+[00:20:00.870] Browser LOG     randomPlace null
+[00:20:00.870] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:20:03.792] Browser LOG     randomPlace null
+[00:20:03.792] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:20:07.512] Browser LOG     randomPlace null
+[00:20:07.512] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:20:37.764] Browser ERROR   Error at radius 500: {}
+[00:20:37.764] Browser LOG     randomPlace null
+[00:20:37.764] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:20:39.707] Browser LOG     Không tìm thấy "bun bo" trong 1000m, đang mở rộng...
+[00:20:39.707] Browser LOG     randomPlace null
+[00:20:39.707] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:20:44.880] Browser ERROR   Error at radius 1500: {}
+[00:20:44.880] Browser LOG     randomPlace null
+[00:20:44.880] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:20:47.946] Browser ERROR   Error at radius 2000: {}
+[00:20:47.946] Browser LOG     randomPlace null
+[00:20:47.946] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:20:49.092] Browser LOG     randomPlace null
+[00:20:49.092] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:20:59.732] Browser LOG     randomPlace null
+[00:20:59.732] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:21:01.457] Browser LOG     Không tìm thấy "bun bo" trong 500m, đang mở rộng...
+[00:21:01.457] Browser LOG     randomPlace null
+[00:21:01.457] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:21:01.957] Browser LOG     Không tìm thấy "bun bo" trong 1000m, đang mở rộng...
+[00:21:01.957] Browser LOG     randomPlace null
+[00:21:01.957] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:21:02.697] Browser LOG     Không tìm thấy "bun bo" trong 1500m, đang mở rộng...
+[00:21:02.697] Browser LOG     randomPlace null
+[00:21:02.697] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:21:06.993] Browser ERROR   Error at radius 2000: {}
+[00:21:06.993] Browser LOG     randomPlace null
+[00:21:06.993] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:21:10.801] Browser ERROR   Error at radius 3000: {}
+[00:21:10.802] Browser LOG     randomPlace null
+[00:21:10.802] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:21:12.909] Browser LOG     randomPlace null
+[00:21:12.909] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:21:17.104] Browser LOG     randomPlace null
+[00:21:17.104] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:21:36.680] Browser ERROR   Error at radius 500: {}
+[00:21:36.680] Browser LOG     randomPlace null
+[00:21:36.680] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:21:37.069] Browser LOG     Không tìm thấy "bun bo" trong 1000m, đang mở rộng...
+[00:21:37.069] Browser LOG     randomPlace null
+[00:21:37.069] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:21:39.557] Browser LOG     Không tìm thấy "bun bo" trong 1500m, đang mở rộng...
+[00:21:39.557] Browser LOG     randomPlace null
+[00:21:39.557] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:21:40.862] Browser LOG     randomPlace null
+[00:21:40.862] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:22:27.590] Browser LOG     randomPlace null
+[00:22:27.590] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:22:29.092] Browser LOG     randomPlace null
+[00:22:29.092] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:22:34.310] Browser LOG     randomPlace null
+[00:22:34.310] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:22:35.813] Browser LOG     randomPlace null
+[00:22:35.813] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:22:36.475] Browser LOG     randomPlace null
+[00:22:36.475] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:22:37.971] Browser LOG     randomPlace null
+[00:22:37.971] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:22:42.034] Browser LOG     randomPlace {"address":"Phuong Tan Son Nhat, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8079116-106.6616523","lat":10.8079116,"lon":106.6616523,"name":"Cà Phê 116","tags":{"amenity":"cafe","internet_access":"wlan","internet_access:fee":"no","name":"Cà Phê 116","outdoor_seating":"yes","phone":"0906686091","smoking":"yes","takeaway":"yes"}}
+[00:22:42.034] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Tan Son Nhat, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8079116-106.6616523","lat":10.8079116,"lon":106.6616523,"name":"Cà Phê 116","tags":{"amenity":"cafe","internet_access":"wlan","internet_access:fee":"no","name":"Cà Phê 116","outdoor_seating":"yes","phone":"0906686091","smoking":"yes","takeaway":"yes"}}
+[00:22:46.006] Browser ERROR   Error at radius 500: {}
+[00:22:46.006] Browser LOG     randomPlace {"address":"Phuong Tan Son Nhat, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8079116-106.6616523","lat":10.8079116,"lon":106.6616523,"name":"Cà Phê 116","tags":{"amenity":"cafe","internet_access":"wlan","internet_access:fee":"no","name":"Cà Phê 116","outdoor_seating":"yes","phone":"0906686091","smoking":"yes","takeaway":"yes"}}
+[00:22:46.006] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Tan Son Nhat, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8079116-106.6616523","lat":10.8079116,"lon":106.6616523,"name":"Cà Phê 116","tags":{"amenity":"cafe","internet_access":"wlan","internet_access:fee":"no","name":"Cà Phê 116","outdoor_seating":"yes","phone":"0906686091","smoking":"yes","takeaway":"yes"}}
+[00:22:49.993] Browser ERROR   Error at radius 500: {}
+[00:22:50.884] Browser LOG     randomPlace {"address":"Phuong Tan Son Nhat, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"vietnamese","emoji":"🍜","id":"10.804531-106.6641851","lat":10.804531,"lon":106.6641851,"name":"Ẩm Thực Chay Thiên An","tags":{"air_conditioning":"yes","amenity":"restaurant","cuisine":"vietnamese","diet:gluten_free":"yes","diet:halal":"yes","diet:vegan":"yes","diet:vegetarian":"only","indoor_seating":"yes","name":"Ẩm Thực Chay Thiên An","outdoor_seating":"no","smoking":"no","wheelchair":"no"}}
+[00:22:50.884] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Tan Son Nhat, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"vietnamese","emoji":"🍜","id":"10.804531-106.6641851","lat":10.804531,"lon":106.6641851,"name":"Ẩm Thực Chay Thiên An","tags":{"air_conditioning":"yes","amenity":"restaurant","cuisine":"vietnamese","diet:gluten_free":"yes","diet:halal":"yes","diet:vegan":"yes","diet:vegetarian":"only","indoor_seating":"yes","name":"Ẩm Thực Chay Thiên An","outdoor_seating":"no","smoking":"no","wheelchair":"no"}}
+[00:22:53.376] Browser LOG     randomPlace {"address":"Phuong Tan Son Nhat, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"vietnamese","emoji":"🍜","id":"10.804531-106.6641851","lat":10.804531,"lon":106.6641851,"name":"Ẩm Thực Chay Thiên An","tags":{"air_conditioning":"yes","amenity":"restaurant","cuisine":"vietnamese","diet:gluten_free":"yes","diet:halal":"yes","diet:vegan":"yes","diet:vegetarian":"only","indoor_seating":"yes","name":"Ẩm Thực Chay Thiên An","outdoor_seating":"no","smoking":"no","wheelchair":"no"}}
+[00:22:53.376] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Tan Son Nhat, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"vietnamese","emoji":"🍜","id":"10.804531-106.6641851","lat":10.804531,"lon":106.6641851,"name":"Ẩm Thực Chay Thiên An","tags":{"air_conditioning":"yes","amenity":"restaurant","cuisine":"vietnamese","diet:gluten_free":"yes","diet:halal":"yes","diet:vegan":"yes","diet:vegetarian":"only","indoor_seating":"yes","name":"Ẩm Thực Chay Thiên An","outdoor_seating":"no","smoking":"no","wheelchair":"no"}}
+[00:22:54.694] Browser ERROR   Error at radius 1000: {}
+[00:22:54.694] Browser LOG     randomPlace {"address":"Phuong Tan Son Nhat, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"vietnamese","emoji":"🍜","id":"10.804531-106.6641851","lat":10.804531,"lon":106.6641851,"name":"Ẩm Thực Chay Thiên An","tags":{"air_conditioning":"yes","amenity":"restaurant","cuisine":"vietnamese","diet:gluten_free":"yes","diet:halal":"yes","diet:vegan":"yes","diet:vegetarian":"only","indoor_seating":"yes","name":"Ẩm Thực Chay Thiên An","outdoor_seating":"no","smoking":"no","wheelchair":"no"}}
+[00:22:54.694] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Tan Son Nhat, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"vietnamese","emoji":"🍜","id":"10.804531-106.6641851","lat":10.804531,"lon":106.6641851,"name":"Ẩm Thực Chay Thiên An","tags":{"air_conditioning":"yes","amenity":"restaurant","cuisine":"vietnamese","diet:gluten_free":"yes","diet:halal":"yes","diet:vegan":"yes","diet:vegetarian":"only","indoor_seating":"yes","name":"Ẩm Thực Chay Thiên An","outdoor_seating":"no","smoking":"no","wheelchair":"no"}}
+[00:22:57.869] Browser ERROR   Error at radius 1500: {}
+[00:22:57.869] Browser LOG     randomPlace {"address":"Phuong Tan Son Nhat, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"vietnamese","emoji":"🍜","id":"10.804531-106.6641851","lat":10.804531,"lon":106.6641851,"name":"Ẩm Thực Chay Thiên An","tags":{"air_conditioning":"yes","amenity":"restaurant","cuisine":"vietnamese","diet:gluten_free":"yes","diet:halal":"yes","diet:vegan":"yes","diet:vegetarian":"only","indoor_seating":"yes","name":"Ẩm Thực Chay Thiên An","outdoor_seating":"no","smoking":"no","wheelchair":"no"}}
+[00:22:57.869] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Tan Son Nhat, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"vietnamese","emoji":"🍜","id":"10.804531-106.6641851","lat":10.804531,"lon":106.6641851,"name":"Ẩm Thực Chay Thiên An","tags":{"air_conditioning":"yes","amenity":"restaurant","cuisine":"vietnamese","diet:gluten_free":"yes","diet:halal":"yes","diet:vegan":"yes","diet:vegetarian":"only","indoor_seating":"yes","name":"Ẩm Thực Chay Thiên An","outdoor_seating":"no","smoking":"no","wheelchair":"no"}}
+[00:23:01.292] Browser ERROR   Error at radius 2000: {}
+[00:23:01.292] Browser LOG     randomPlace {"address":"Phuong Tan Son Nhat, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"vietnamese","emoji":"🍜","id":"10.804531-106.6641851","lat":10.804531,"lon":106.6641851,"name":"Ẩm Thực Chay Thiên An","tags":{"air_conditioning":"yes","amenity":"restaurant","cuisine":"vietnamese","diet:gluten_free":"yes","diet:halal":"yes","diet:vegan":"yes","diet:vegetarian":"only","indoor_seating":"yes","name":"Ẩm Thực Chay Thiên An","outdoor_seating":"no","smoking":"no","wheelchair":"no"}}
+[00:23:01.292] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Tan Son Nhat, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"vietnamese","emoji":"🍜","id":"10.804531-106.6641851","lat":10.804531,"lon":106.6641851,"name":"Ẩm Thực Chay Thiên An","tags":{"air_conditioning":"yes","amenity":"restaurant","cuisine":"vietnamese","diet:gluten_free":"yes","diet:halal":"yes","diet:vegan":"yes","diet:vegetarian":"only","indoor_seating":"yes","name":"Ẩm Thực Chay Thiên An","outdoor_seating":"no","smoking":"no","wheelchair":"no"}}
+[00:23:03.604] Browser LOG     randomPlace {"address":"Phuong Cau Kieu, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"vietnamese","emoji":"🍜","id":"10.7962062-106.6778249","lat":10.7962062,"lon":106.6778249,"name":"Ẩm Thực Chay Rêu","tags":{"amenity":"restaurant","cuisine":"vietnamese","diet:gluten_free":"yes","diet:vegan":"yes","diet:vegetarian":"only","indoor_seating":"yes","name":"Ẩm Thực Chay Rêu","opening_hours":"Mo-Su 10:00-21:00","outdoor_seating":"no","phone":"+842862723066","smoking":"no","website":"https://reu-kitchen.vn","wheelchair":"no"}}
+[00:23:03.604] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Cau Kieu, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"vietnamese","emoji":"🍜","id":"10.7962062-106.6778249","lat":10.7962062,"lon":106.6778249,"name":"Ẩm Thực Chay Rêu","tags":{"amenity":"restaurant","cuisine":"vietnamese","diet:gluten_free":"yes","diet:vegan":"yes","diet:vegetarian":"only","indoor_seating":"yes","name":"Ẩm Thực Chay Rêu","opening_hours":"Mo-Su 10:00-21:00","outdoor_seating":"no","phone":"+842862723066","smoking":"no","website":"https://reu-kitchen.vn","wheelchair":"no"}}
+[00:23:59.458] Server  LOG      ✓ Compiled in 132ms
+[00:24:01.299] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'appendChild')
+[00:24:01.299] Browser ERROR   uncaughtError: Error: Map container is being reused by another instance
+[00:24:31.786] Server  LOG     randomPlace null
+[00:24:33.760] Browser LOG     randomPlace null
+[00:24:33.760] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:24:33.760] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         katalonextensionid="ljdobmomdgdljniojadhoplhkpialdid"
+                        >
+                  ...
+
+[00:24:33.932] Browser LOG     randomPlace null
+[00:24:33.932] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:24:33.932] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:24:33.932] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:24:33.933] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1766158235135}
+[00:24:34.274] Browser LOG     randomPlace null
+[00:24:34.274] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:24:35.310] Browser LOG     randomPlace null
+[00:24:35.311] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:24:36.814] Browser LOG     randomPlace null
+[00:24:36.814] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:24:38.259] Browser LOG     randomPlace {"address":"Phuong Bay Hien, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8014235-106.6566999","lat":10.8014235,"lon":106.6566999,"name":"Sorts Of Pho","tags":{"amenity":"cafe","name":"Sorts Of Pho","name:vi":"Phở 18 Plus"}}
+[00:24:38.259] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Bay Hien, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8014235-106.6566999","lat":10.8014235,"lon":106.6566999,"name":"Sorts Of Pho","tags":{"amenity":"cafe","name":"Sorts Of Pho","name:vi":"Phở 18 Plus"}}
+[00:24:41.304] Browser LOG     randomPlace null
+[00:24:41.304] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:24:42.803] Browser LOG     randomPlace null
+[00:24:42.803] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:24:44.656] Browser LOG     randomPlace {"address":"Phuong Tan Son Nhat, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"coffee_shop","emoji":"☕","id":"10.8024671-106.660464","lat":10.8024671,"lon":106.660464,"name":"Cà Phê Amazing","tags":{"addr:city":"Ho Chi Minh City","addr:district":"Tân Bình","addr:housenumber":"35","addr:street":"Thăng Long","addr:subdistrict":"4","amenity":"cafe","cuisine":"coffee_shop","name":"Cà Phê Amazing","opening_hours":"Mo-Sa","website":"https://amazingcoffee.vn/"}}
+[00:24:44.656] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Tan Son Nhat, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"coffee_shop","emoji":"☕","id":"10.8024671-106.660464","lat":10.8024671,"lon":106.660464,"name":"Cà Phê Amazing","tags":{"addr:city":"Ho Chi Minh City","addr:district":"Tân Bình","addr:housenumber":"35","addr:street":"Thăng Long","addr:subdistrict":"4","amenity":"cafe","cuisine":"coffee_shop","name":"Cà Phê Amazing","opening_hours":"Mo-Sa","website":"https://amazingcoffee.vn/"}}
+[00:24:48.872] Browser LOG     randomPlace null
+[00:24:48.872] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:24:50.372] Browser LOG     randomPlace null
+[00:24:50.372] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:24:56.663] Browser ERROR   Error at radius 500: {}
+[00:24:56.664] Browser LOG     randomPlace null
+[00:24:56.664] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:24:58.422] Browser LOG     randomPlace {"address":"Phuong Bay Hien, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8123802-106.6547419","lat":10.8123802,"lon":106.6547419,"name":"Soleil Café","tags":{"addr:street":"Ga đi T3 (Tầng 3)","amenity":"cafe","level":"3","name":"Soleil Café"}}
+[00:24:58.422] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Bay Hien, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8123802-106.6547419","lat":10.8123802,"lon":106.6547419,"name":"Soleil Café","tags":{"addr:street":"Ga đi T3 (Tầng 3)","amenity":"cafe","level":"3","name":"Soleil Café"}}
+[00:26:25.010] Browser LOG     randomPlace {"address":"Phuong Bay Hien, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8123802-106.6547419","lat":10.8123802,"lon":106.6547419,"name":"Soleil Café","tags":{"addr:street":"Ga đi T3 (Tầng 3)","amenity":"cafe","level":"3","name":"Soleil Café"}}
+[00:26:25.011] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Bay Hien, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8123802-106.6547419","lat":10.8123802,"lon":106.6547419,"name":"Soleil Café","tags":{"addr:street":"Ga đi T3 (Tầng 3)","amenity":"cafe","level":"3","name":"Soleil Café"}}
+[00:26:27.957] Browser LOG     Không tìm thấy quán trong 500m, đang mở rộng...
+[00:26:27.958] Browser LOG     randomPlace {"address":"Phuong Bay Hien, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8123802-106.6547419","lat":10.8123802,"lon":106.6547419,"name":"Soleil Café","tags":{"addr:street":"Ga đi T3 (Tầng 3)","amenity":"cafe","level":"3","name":"Soleil Café"}}
+[00:26:27.958] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Bay Hien, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8123802-106.6547419","lat":10.8123802,"lon":106.6547419,"name":"Soleil Café","tags":{"addr:street":"Ga đi T3 (Tầng 3)","amenity":"cafe","level":"3","name":"Soleil Café"}}
+[00:26:31.966] Browser LOG     randomPlace {"address":"Phuong Bay Hien, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8123802-106.6547419","lat":10.8123802,"lon":106.6547419,"name":"Soleil Café","tags":{"addr:street":"Ga đi T3 (Tầng 3)","amenity":"cafe","level":"3","name":"Soleil Café"}}
+[00:26:31.966] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Bay Hien, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8123802-106.6547419","lat":10.8123802,"lon":106.6547419,"name":"Soleil Café","tags":{"addr:street":"Ga đi T3 (Tầng 3)","amenity":"cafe","level":"3","name":"Soleil Café"}}
+[00:26:36.375] Browser LOG     randomPlace {"address":"Phuong Bay Hien, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8123802-106.6547419","lat":10.8123802,"lon":106.6547419,"name":"Soleil Café","tags":{"addr:street":"Ga đi T3 (Tầng 3)","amenity":"cafe","level":"3","name":"Soleil Café"}}
+[00:26:36.375] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Bay Hien, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8123802-106.6547419","lat":10.8123802,"lon":106.6547419,"name":"Soleil Café","tags":{"addr:street":"Ga đi T3 (Tầng 3)","amenity":"cafe","level":"3","name":"Soleil Café"}}
+[00:26:39.573] Server  LOG      ✓ Compiled in 57ms
+[00:26:39.654] Browser LOG     randomPlace {"address":"Phuong Bay Hien, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8123802-106.6547419","lat":10.8123802,"lon":106.6547419,"name":"Soleil Café","tags":{"addr:street":"Ga đi T3 (Tầng 3)","amenity":"cafe","level":"3","name":"Soleil Café"}}
+[00:26:39.654] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Bay Hien, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.8123802-106.6547419","lat":10.8123802,"lon":106.6547419,"name":"Soleil Café","tags":{"addr:street":"Ga đi T3 (Tầng 3)","amenity":"cafe","level":"3","name":"Soleil Café"}}
+[00:26:39.985] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'appendChild')
+[00:26:39.987] Browser ERROR   uncaughtError: Error: Map container is being reused by another instance
+[00:26:42.040] Browser ERROR   Error at radius 500: {}
+[00:26:54.618] Server  LOG     randomPlace null
+[00:26:56.254] Browser LOG     randomPlace null
+[00:26:56.255] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:26:56.255] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         katalonextensionid="ljdobmomdgdljniojadhoplhkpialdid"
+                        >
+                  ...
+
+[00:26:56.532] Browser LOG     randomPlace null
+[00:26:56.532] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:26:56.532] Browser LOG     randomPlace null
+[00:26:56.532] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:26:56.611] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:26:56.612] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:26:56.612] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1766158377816}
+[00:26:56.802] Browser LOG     randomPlace null
+[00:26:56.802] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:26:58.104] Browser LOG     randomPlace null
+[00:26:58.104] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:26:59.605] Browser LOG     randomPlace null
+[00:26:59.605] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:27:04.881] Browser ERROR   Error at radius 500: {}
+[00:27:04.881] Browser LOG     randomPlace null
+[00:27:04.881] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:27:09.045] Browser ERROR   Error at radius 1000: {}
+[00:27:09.045] Browser LOG     randomPlace null
+[00:27:09.045] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:27:10.987] Browser LOG     randomPlace {"address":"Phuong Duc Nhuan, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"restaurant","emoji":"🍽️","id":"10.8012092-106.6665516","lat":10.8012092,"lon":106.6665516,"name":"Nhà Hàng Vườn Phố","tags":{"amenity":"restaurant","name":"Nhà Hàng Vườn Phố"}}
+[00:27:10.987] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Duc Nhuan, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"restaurant","emoji":"🍽️","id":"10.8012092-106.6665516","lat":10.8012092,"lon":106.6665516,"name":"Nhà Hàng Vườn Phố","tags":{"amenity":"restaurant","name":"Nhà Hàng Vườn Phố"}}
+[00:27:14.238] Browser LOG     randomPlace {"address":"Phuong Duc Nhuan, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"restaurant","emoji":"🍽️","id":"10.8012092-106.6665516","lat":10.8012092,"lon":106.6665516,"name":"Nhà Hàng Vườn Phố","tags":{"amenity":"restaurant","name":"Nhà Hàng Vườn Phố"}}
+[00:27:14.238] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Duc Nhuan, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"restaurant","emoji":"🍽️","id":"10.8012092-106.6665516","lat":10.8012092,"lon":106.6665516,"name":"Nhà Hàng Vườn Phố","tags":{"amenity":"restaurant","name":"Nhà Hàng Vườn Phố"}}
+[00:27:15.747] Browser LOG     randomPlace null
+[00:27:15.748] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:27:17.247] Browser LOG     randomPlace null
+[00:27:17.247] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:27:21.686] Browser ERROR   Error at radius 500: {}
+[00:27:21.686] Browser LOG     randomPlace null
+[00:27:21.686] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:27:24.369] Browser LOG     randomPlace {"address":"Phuong Tan Son Hoa, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.7999408-106.6592725","lat":10.7999408,"lon":106.6592725,"name":"Cà Phê Cũ","tags":{"addr:street":"23 Nguyễn Thái Bình, Q. Tân Bình","amenity":"cafe","internet_access":"wlan","name":"Cà Phê Cũ"}}
+[00:27:24.369] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace {"address":"Phuong Tan Son Hoa, Thành phố Hồ Chí Minh, Thành phố Hồ Chí Minh","cuisine":"cafe","emoji":"☕","id":"10.7999408-106.6592725","lat":10.7999408,"lon":106.6592725,"name":"Cà Phê Cũ","tags":{"addr:street":"23 Nguyễn Thái Bình, Q. Tân Bình","amenity":"cafe","internet_access":"wlan","name":"Cà Phê Cũ"}}
+[00:41:23.362] Server  LOG      ✓ Compiled in 398ms
+[00:41:23.737] Server  LOG     randomPlace null
+[00:41:26.434] Browser LOG     randomPlace null
+[00:41:26.434] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:41:26.434] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         katalonextensionid="ljdobmomdgdljniojadhoplhkpialdid"
+                        >
+                          <body
+                            className="nunito_8df14f16-module__aAdLTW__className font-sans antialiased"
+-                           data-new-gr-c-s-check-loaded="14.1267.0"
+-                           data-gr-ext-installed=""
+                          >
+                  ...
+
+[00:41:26.434] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:41:26.434] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:41:26.434] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1766159247891}
+[00:41:26.435] Browser LOG     randomPlace null
+[00:41:26.435] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:41:26.826] Browser LOG     randomPlace null
+[00:41:26.826] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null
+[00:42:12.292] Browser LOG     randomPlace null
+[00:42:12.292] Browser LOG     [2;38;2;124;124;124m%s[0m randomPlace null

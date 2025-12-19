@@ -422,10 +422,15 @@ export function HeroSection() {
                 <Button
                   size="lg"
                   onClick={handleRegenerate}
+                  disabled={isSearching}
                   className="rounded-full px-8"
                 >
-                  <RefreshCw className="w-5 h-5 mr-2" />
-                  Tìm quán khác
+                  <RefreshCw
+                    className={`w-5 h-5 mr-2 ${
+                      isSearching ? "animate-spin" : ""
+                    }`}
+                  />
+                  {isSearching ? "Đang tìm..." : "Tìm quán khác"}
                 </Button>
                 <Button
                   size="lg"

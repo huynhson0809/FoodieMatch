@@ -18,7 +18,7 @@ export function Header() {
               </div>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-xl font-bold text-primary">FoodieMatch</h1>
+              <h1 className="text-xl font-bold text-primary">HoneyBite</h1>
               <p className="text-xs text-muted-foreground">Couples Edition</p>
             </div>
           </div>

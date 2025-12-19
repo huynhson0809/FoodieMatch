@@ -1102,16 +1102,17 @@ function HeroSection() {
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                     size: "lg",
                                     onClick: handleRegenerate,
+                                    disabled: isSearching,
                                     className: "rounded-full px-8",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$refresh$2d$cw$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__RefreshCw$3e$__["RefreshCw"], {
-                                            className: "w-5 h-5 mr-2"
+                                            className: `w-5 h-5 mr-2 ${isSearching ? "animate-spin" : ""}`
                                         }, void 0, false, {
                                             fileName: "[project]/components/ui/hero-section.tsx",
-                                            lineNumber: 427,
+                                            lineNumber: 428,
                                             columnNumber: 19
                                         }, this),
-                                        "Tìm quán khác"
+                                        isSearching ? "Đang tìm..." : "Tìm quán khác"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/ui/hero-section.tsx",
@@ -1128,14 +1129,14 @@ function HeroSection() {
                                             className: "w-5 h-5 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/components/ui/hero-section.tsx",
-                                            lineNumber: 436,
+                                            lineNumber: 441,
                                             columnNumber: 19
                                         }, this),
                                         "Chọn lại từ đầu"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/ui/hero-section.tsx",
-                                    lineNumber: 430,
+                                    lineNumber: 435,
                                     columnNumber: 17
                                 }, this)
                             ]
@@ -1157,7 +1158,7 @@ function HeroSection() {
                             children: "😢"
                         }, void 0, false, {
                             fileName: "[project]/components/ui/hero-section.tsx",
-                            lineNumber: 443,
+                            lineNumber: 448,
                             columnNumber: 15
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1165,7 +1166,7 @@ function HeroSection() {
                             children: "Không tìm thấy quán phù hợp"
                         }, void 0, false, {
                             fileName: "[project]/components/ui/hero-section.tsx",
-                            lineNumber: 444,
+                            lineNumber: 449,
                             columnNumber: 15
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1176,20 +1177,20 @@ function HeroSection() {
                                     className: "w-5 h-5 mr-2"
                                 }, void 0, false, {
                                     fileName: "[project]/components/ui/hero-section.tsx",
-                                    lineNumber: 448,
+                                    lineNumber: 453,
                                     columnNumber: 17
                                 }, this),
                                 "Thử lại"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/ui/hero-section.tsx",
-                            lineNumber: 447,
+                            lineNumber: 452,
                             columnNumber: 15
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/ui/hero-section.tsx",
-                    lineNumber: 442,
+                    lineNumber: 447,
                     columnNumber: 13
                 }, this)
             }, void 0, false, {
@@ -1273,7 +1274,6 @@ function RandomGenerator() {
         clearPlaces();
         // Animate spinning trong 1.5s
         await new Promise((resolve)=>setTimeout(resolve, 1500));
-        setIsSpinning(false);
         // Tìm quán với progressive radius và filter
         try {
             const place = await findFoodNearbyWithRetry(filter);
@@ -1284,6 +1284,9 @@ function RandomGenerator() {
         } catch (error) {
             console.error(error);
             alert("Không tìm thấy quán nào!");
+        } finally{
+            // Chỉ dừng spinning SAU KHI API hoàn tất
+            setIsSpinning(false);
         }
     };
     const isReady = location && !isLoadingLocation;
@@ -1305,7 +1308,7 @@ function RandomGenerator() {
                                     className: "w-6 h-6 text-primary"
                                 }, void 0, false, {
                                     fileName: "[project]/components/ui/random-generator.tsx",
-                                    lineNumber: 74,
+                                    lineNumber: 76,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1313,20 +1316,20 @@ function RandomGenerator() {
                                     children: "Random Food Generator"
                                 }, void 0, false, {
                                     fileName: "[project]/components/ui/random-generator.tsx",
-                                    lineNumber: 75,
+                                    lineNumber: 77,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"], {
                                     className: "w-6 h-6 text-primary"
                                 }, void 0, false, {
                                     fileName: "[project]/components/ui/random-generator.tsx",
-                                    lineNumber: 78,
+                                    lineNumber: 80,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/ui/random-generator.tsx",
-                            lineNumber: 73,
+                            lineNumber: 75,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1336,7 +1339,7 @@ function RandomGenerator() {
                                     className: `w-4 h-4 flex-shrink-0 ${isReady ? "text-green-500" : "text-muted-foreground"}`
                                 }, void 0, false, {
                                     fileName: "[project]/components/ui/random-generator.tsx",
-                                    lineNumber: 83,
+                                    lineNumber: 85,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1345,13 +1348,13 @@ function RandomGenerator() {
                                     children: isReady ? locationName || "Đã lấy được vị trí của bạn" : "Đang lấy vị trí..."
                                 }, void 0, false, {
                                     fileName: "[project]/components/ui/random-generator.tsx",
-                                    lineNumber: 88,
+                                    lineNumber: 90,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/ui/random-generator.tsx",
-                            lineNumber: 82,
+                            lineNumber: 84,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1359,7 +1362,7 @@ function RandomGenerator() {
                             children: "Still can't decide? Let fate choose for you!"
                         }, void 0, false, {
                             fileName: "[project]/components/ui/random-generator.tsx",
-                            lineNumber: 100,
+                            lineNumber: 102,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1373,14 +1376,14 @@ function RandomGenerator() {
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/components/ui/random-generator.tsx",
-                                            lineNumber: 114,
+                                            lineNumber: 116,
                                             columnNumber: 15
                                         }, this),
                                         "Tất cả"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/ui/random-generator.tsx",
-                                    lineNumber: 106,
+                                    lineNumber: 108,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1391,14 +1394,14 @@ function RandomGenerator() {
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/components/ui/random-generator.tsx",
-                                            lineNumber: 125,
+                                            lineNumber: 127,
                                             columnNumber: 15
                                         }, this),
                                         "Đồ ăn"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/ui/random-generator.tsx",
-                                    lineNumber: 117,
+                                    lineNumber: 119,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1409,20 +1412,20 @@ function RandomGenerator() {
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/components/ui/random-generator.tsx",
-                                            lineNumber: 136,
+                                            lineNumber: 138,
                                             columnNumber: 15
                                         }, this),
                                         "Đồ uống"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/ui/random-generator.tsx",
-                                    lineNumber: 128,
+                                    lineNumber: 130,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/ui/random-generator.tsx",
-                            lineNumber: 105,
+                            lineNumber: 107,
                             columnNumber: 11
                         }, this),
                         (isSearchingPlaces || isSpinning) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1436,12 +1439,12 @@ function RandomGenerator() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/ui/random-generator.tsx",
-                                lineNumber: 145,
+                                lineNumber: 147,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/ui/random-generator.tsx",
-                            lineNumber: 143,
+                            lineNumber: 145,
                             columnNumber: 13
                         }, this),
                         randomPlace && showMap && !isSearchingPlaces && !isSpinning && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1452,7 +1455,7 @@ function RandomGenerator() {
                                     children: randomPlace.name
                                 }, void 0, false, {
                                     fileName: "[project]/components/ui/random-generator.tsx",
-                                    lineNumber: 159,
+                                    lineNumber: 161,
                                     columnNumber: 15
                                 }, this),
                                 randomPlace.cuisine && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1460,7 +1463,7 @@ function RandomGenerator() {
                                     children: randomPlace.cuisine === "restaurant" ? "Nhà hàng" : randomPlace.cuisine === "cafe" ? "Quán cafe" : randomPlace.cuisine === "fast_food" ? "Đồ ăn nhanh" : randomPlace.cuisine
                                 }, void 0, false, {
                                     fileName: "[project]/components/ui/random-generator.tsx",
-                                    lineNumber: 165,
+                                    lineNumber: 167,
                                     columnNumber: 17
                                 }, this),
                                 randomPlace.address && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1471,7 +1474,7 @@ function RandomGenerator() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/ui/random-generator.tsx",
-                                    lineNumber: 178,
+                                    lineNumber: 180,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -1484,7 +1487,7 @@ function RandomGenerator() {
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/components/ui/random-generator.tsx",
-                                            lineNumber: 190,
+                                            lineNumber: 192,
                                             columnNumber: 17
                                         }, this),
                                         "Chỉ đường ngay",
@@ -1492,19 +1495,19 @@ function RandomGenerator() {
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/components/ui/random-generator.tsx",
-                                            lineNumber: 192,
+                                            lineNumber: 194,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/ui/random-generator.tsx",
-                                    lineNumber: 184,
+                                    lineNumber: 186,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/ui/random-generator.tsx",
-                            lineNumber: 157,
+                            lineNumber: 159,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1518,7 +1521,7 @@ function RandomGenerator() {
                                         className: "w-5 h-5 mr-2 animate-pulse"
                                     }, void 0, false, {
                                         fileName: "[project]/components/ui/random-generator.tsx",
-                                        lineNumber: 205,
+                                        lineNumber: 207,
                                         columnNumber: 17
                                     }, this),
                                     "Đang tìm..."
@@ -1529,7 +1532,7 @@ function RandomGenerator() {
                                         className: "w-5 h-5 mr-2"
                                     }, void 0, false, {
                                         fileName: "[project]/components/ui/random-generator.tsx",
-                                        lineNumber: 210,
+                                        lineNumber: 212,
                                         columnNumber: 17
                                     }, this),
                                     randomPlace ? "Thử lại!" : "Surprise Me!"
@@ -1537,18 +1540,18 @@ function RandomGenerator() {
                             }, void 0, true)
                         }, void 0, false, {
                             fileName: "[project]/components/ui/random-generator.tsx",
-                            lineNumber: 197,
+                            lineNumber: 199,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/ui/random-generator.tsx",
-                    lineNumber: 72,
+                    lineNumber: 74,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/ui/random-generator.tsx",
-                lineNumber: 71,
+                lineNumber: 73,
                 columnNumber: 7
             }, this),
             location && showMap && randomPlace && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -1562,23 +1565,23 @@ function RandomGenerator() {
                         ]
                     }, void 0, false, {
                         fileName: "[project]/components/ui/random-generator.tsx",
-                        lineNumber: 222,
+                        lineNumber: 224,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/ui/random-generator.tsx",
-                    lineNumber: 221,
+                    lineNumber: 223,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/ui/random-generator.tsx",
-                lineNumber: 220,
+                lineNumber: 222,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/ui/random-generator.tsx",
-        lineNumber: 70,
+        lineNumber: 72,
         columnNumber: 5
     }, this);
 }
@@ -1723,9 +1726,15 @@ const restaurants = [
         category: "liquid"
     }
 ];
+// Remove Vietnamese accents for accent-insensitive search
+const removeAccents = (str)=>{
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d").replace(/Đ/g, "D").toLowerCase();
+};
 function RestaurantGrid({ searchQuery, category }) {
     const filteredRestaurants = restaurants.filter((restaurant)=>{
-        const matchesSearch = restaurant.name.toLowerCase().includes(searchQuery.toLowerCase());
+        const normalizedName = removeAccents(restaurant.name);
+        const normalizedQuery = removeAccents(searchQuery);
+        const matchesSearch = normalizedName.includes(normalizedQuery);
         const matchesCategory = !category || restaurant.category === category;
         return matchesSearch && matchesCategory;
     });
@@ -1740,7 +1749,7 @@ function RestaurantGrid({ searchQuery, category }) {
                         children: "Trending Restaurants Near You"
                     }, void 0, false, {
                         fileName: "[project]/components/ui/restaurant-grid.tsx",
-                        lineNumber: 82,
+                        lineNumber: 92,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1751,13 +1760,13 @@ function RestaurantGrid({ searchQuery, category }) {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/ui/restaurant-grid.tsx",
-                        lineNumber: 85,
+                        lineNumber: 95,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/ui/restaurant-grid.tsx",
-                lineNumber: 81,
+                lineNumber: 91,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1774,7 +1783,7 @@ function RestaurantGrid({ searchQuery, category }) {
                                         className: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                                     }, void 0, false, {
                                         fileName: "[project]/components/ui/restaurant-grid.tsx",
-                                        lineNumber: 98,
+                                        lineNumber: 108,
                                         columnNumber: 15
                                     }, this),
                                     restaurant.isTikTokHot && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1784,20 +1793,20 @@ function RestaurantGrid({ searchQuery, category }) {
                                                 className: "w-3 h-3 mr-1"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/ui/restaurant-grid.tsx",
-                                                lineNumber: 105,
+                                                lineNumber: 115,
                                                 columnNumber: 19
                                             }, this),
                                             "TikTok Hot"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/ui/restaurant-grid.tsx",
-                                        lineNumber: 104,
+                                        lineNumber: 114,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/ui/restaurant-grid.tsx",
-                                lineNumber: 97,
+                                lineNumber: 107,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1808,7 +1817,7 @@ function RestaurantGrid({ searchQuery, category }) {
                                         children: restaurant.name
                                     }, void 0, false, {
                                         fileName: "[project]/components/ui/restaurant-grid.tsx",
-                                        lineNumber: 113,
+                                        lineNumber: 123,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1821,7 +1830,7 @@ function RestaurantGrid({ searchQuery, category }) {
                                                         className: "w-5 h-5 fill-chart-4 text-chart-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/ui/restaurant-grid.tsx",
-                                                        lineNumber: 120,
+                                                        lineNumber: 130,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1829,13 +1838,13 @@ function RestaurantGrid({ searchQuery, category }) {
                                                         children: restaurant.rating
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/ui/restaurant-grid.tsx",
-                                                        lineNumber: 121,
+                                                        lineNumber: 131,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/ui/restaurant-grid.tsx",
-                                                lineNumber: 119,
+                                                lineNumber: 129,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1845,7 +1854,7 @@ function RestaurantGrid({ searchQuery, category }) {
                                                         className: "w-4 h-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/ui/restaurant-grid.tsx",
-                                                        lineNumber: 128,
+                                                        lineNumber: 138,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1853,19 +1862,19 @@ function RestaurantGrid({ searchQuery, category }) {
                                                         children: restaurant.distance
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/ui/restaurant-grid.tsx",
-                                                        lineNumber: 129,
+                                                        lineNumber: 139,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/ui/restaurant-grid.tsx",
-                                                lineNumber: 127,
+                                                lineNumber: 137,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/ui/restaurant-grid.tsx",
-                                        lineNumber: 117,
+                                        lineNumber: 127,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1876,31 +1885,31 @@ function RestaurantGrid({ searchQuery, category }) {
                                                 className: "w-4 h-4 mr-2"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/ui/restaurant-grid.tsx",
-                                                lineNumber: 138,
+                                                lineNumber: 148,
                                                 columnNumber: 17
                                             }, this),
                                             "Get Directions"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/ui/restaurant-grid.tsx",
-                                        lineNumber: 134,
+                                        lineNumber: 144,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/ui/restaurant-grid.tsx",
-                                lineNumber: 112,
+                                lineNumber: 122,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, restaurant.id, true, {
                         fileName: "[project]/components/ui/restaurant-grid.tsx",
-                        lineNumber: 92,
+                        lineNumber: 102,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/components/ui/restaurant-grid.tsx",
-                lineNumber: 90,
+                lineNumber: 100,
                 columnNumber: 7
             }, this),
             filteredRestaurants.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1911,7 +1920,7 @@ function RestaurantGrid({ searchQuery, category }) {
                         children: "🔍"
                     }, void 0, false, {
                         fileName: "[project]/components/ui/restaurant-grid.tsx",
-                        lineNumber: 148,
+                        lineNumber: 158,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1919,7 +1928,7 @@ function RestaurantGrid({ searchQuery, category }) {
                         children: "No restaurants found"
                     }, void 0, false, {
                         fileName: "[project]/components/ui/restaurant-grid.tsx",
-                        lineNumber: 149,
+                        lineNumber: 159,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1927,19 +1936,19 @@ function RestaurantGrid({ searchQuery, category }) {
                         children: "Try adjusting your search or category"
                     }, void 0, false, {
                         fileName: "[project]/components/ui/restaurant-grid.tsx",
-                        lineNumber: 152,
+                        lineNumber: 162,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/ui/restaurant-grid.tsx",
-                lineNumber: 147,
+                lineNumber: 157,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/ui/restaurant-grid.tsx",
-        lineNumber: 80,
+        lineNumber: 90,
         columnNumber: 5
     }, this);
 }

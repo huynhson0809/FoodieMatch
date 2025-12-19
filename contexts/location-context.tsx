@@ -475,6 +475,16 @@ export function LocationProvider({ children }: LocationProviderProps) {
     [location]
   );
 
+  // Helper function to remove Vietnamese accents for accent-insensitive search
+  const removeAccents = (str: string): string => {
+    return str
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/đ/g, "d")
+      .replace(/Đ/g, "D")
+      .toLowerCase();
+  };
+
   // Tìm quán theo keyword (tên món hoặc loại quán)
   const searchByKeyword = useCallback(
     async (
@@ -496,23 +506,21 @@ export function LocationProvider({ children }: LocationProviderProps) {
           ? [500, 1000, 1500, 2000, 3000, 4000, 5000]
           : [5000, 7000, 10000, 12000, 15000];
 
+      // Normalize keyword to remove accents for comparison
+      const normalizedKeyword = removeAccents(keyword);
+
       for (const radius of radiusLevels) {
         setSearchRadius(radius);
 
         try {
           const [lat, lng] = location;
 
-          // Overpass query tìm kiếm theo keyword trong name hoặc cuisine
-          // Case-insensitive search using regex
-          const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+          // Query để lấy TẤT CẢ quán ăn trong bán kính
+          // Sau đó filter trên client-side với accent-insensitive matching
           const query = `
           [out:json];
           (
-            node["amenity"~"restaurant|cafe|fast_food|bar"]
-              ["name"~"${escapedKeyword}",i]
-              (around:${radius},${lat},${lng});
-            node["amenity"~"restaurant|cafe|fast_food|bar"]
-              ["cuisine"~"${escapedKeyword}",i]
+            node["amenity"~"restaurant|cafe|fast_food|bar"]["name"]
               (around:${radius},${lat},${lng});
           );
           out body;
@@ -525,8 +533,23 @@ export function LocationProvider({ children }: LocationProviderProps) {
           );
           const data = await response.json();
 
+          // Filter theo keyword với accent-insensitive matching
           let validElements = data.elements.filter(
-            (el: { tags?: { name?: string } }) => el.tags && el.tags.name
+            (el: { tags?: { name?: string; cuisine?: string } }) => {
+              if (!el.tags || !el.tags.name) return false;
+
+              // Normalize tên quán và cuisine để so sánh
+              const normalizedName = removeAccents(el.tags.name);
+              const normalizedCuisine = el.tags.cuisine
+                ? removeAccents(el.tags.cuisine)
+                : "";
+
+              // Match nếu keyword có trong tên hoặc cuisine
+              return (
+                normalizedName.includes(normalizedKeyword) ||
+                normalizedCuisine.includes(normalizedKeyword)
+              );
+            }
           );
 
           // Filter theo khoảng cách thực tế

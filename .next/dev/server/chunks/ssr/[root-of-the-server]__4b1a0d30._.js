@@ -362,6 +362,10 @@ function LocationProvider({ children }) {
     }, [
         location
     ]);
+    // Helper function to remove Vietnamese accents for accent-insensitive search
+    const removeAccents = (str)=>{
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d").replace(/Đ/g, "D").toLowerCase();
+    };
     // Tìm quán theo keyword (tên món hoặc loại quán)
     const searchByKeyword = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(async (keyword, distance = "near", excludePlaceId)=>{
         if (!location) {
@@ -386,28 +390,33 @@ function LocationProvider({ children }) {
             12000,
             15000
         ];
+        // Normalize keyword to remove accents for comparison
+        const normalizedKeyword = removeAccents(keyword);
         for (const radius of radiusLevels){
             setSearchRadius(radius);
             try {
                 const [lat, lng] = location;
-                // Overpass query tìm kiếm theo keyword trong name hoặc cuisine
-                // Case-insensitive search using regex
-                const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+                // Query để lấy TẤT CẢ quán ăn trong bán kính
+                // Sau đó filter trên client-side với accent-insensitive matching
                 const query = `
           [out:json];
           (
-            node["amenity"~"restaurant|cafe|fast_food|bar"]
-              ["name"~"${escapedKeyword}",i]
-              (around:${radius},${lat},${lng});
-            node["amenity"~"restaurant|cafe|fast_food|bar"]
-              ["cuisine"~"${escapedKeyword}",i]
+            node["amenity"~"restaurant|cafe|fast_food|bar"]["name"]
               (around:${radius},${lat},${lng});
           );
           out body;
         `;
                 const response = await fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`);
                 const data = await response.json();
-                let validElements = data.elements.filter((el)=>el.tags && el.tags.name);
+                // Filter theo keyword với accent-insensitive matching
+                let validElements = data.elements.filter((el)=>{
+                    if (!el.tags || !el.tags.name) return false;
+                    // Normalize tên quán và cuisine để so sánh
+                    const normalizedName = removeAccents(el.tags.name);
+                    const normalizedCuisine = el.tags.cuisine ? removeAccents(el.tags.cuisine) : "";
+                    // Match nếu keyword có trong tên hoặc cuisine
+                    return normalizedName.includes(normalizedKeyword) || normalizedCuisine.includes(normalizedKeyword);
+                });
                 // Filter theo khoảng cách thực tế
                 if (validElements.length > 0) {
                     validElements = validElements.filter((el)=>{
@@ -502,7 +511,7 @@ function LocationProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/contexts/location-context.tsx",
-        lineNumber: 642,
+        lineNumber: 665,
         columnNumber: 5
     }, this);
 }

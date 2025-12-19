@@ -44,7 +44,6 @@ export function RandomGenerator() {
 
     // Animate spinning trong 1.5s
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSpinning(false);
 
     // Tìm quán với progressive radius và filter
     try {
@@ -56,6 +55,9 @@ export function RandomGenerator() {
     } catch (error) {
       console.error(error);
       alert("Không tìm thấy quán nào!");
+    } finally {
+      // Chỉ dừng spinning SAU KHI API hoàn tất
+      setIsSpinning(false);
     }
   };
 

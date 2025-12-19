@@ -67,11 +67,21 @@ const restaurants = [
   },
 ];
 
+// Remove Vietnamese accents for accent-insensitive search
+const removeAccents = (str: string): string => {
+  return str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "D")
+    .toLowerCase();
+};
+
 export function RestaurantGrid({ searchQuery, category }: RestaurantGridProps) {
   const filteredRestaurants = restaurants.filter((restaurant) => {
-    const matchesSearch = restaurant.name
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
+    const normalizedName = removeAccents(restaurant.name);
+    const normalizedQuery = removeAccents(searchQuery);
+    const matchesSearch = normalizedName.includes(normalizedQuery);
     const matchesCategory = !category || restaurant.category === category;
     return matchesSearch && matchesCategory;
   });

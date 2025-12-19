@@ -13,7 +13,7 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "FoodieMatch - Couple's Food Decision App",
+  title: "HoneyBite - Couple's Food Decision App",
   description:
     "Can't decide what to eat? Let us help you find the perfect meal together!",
   generator: "v0.app",
