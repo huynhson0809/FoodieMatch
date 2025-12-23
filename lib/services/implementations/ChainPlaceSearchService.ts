@@ -1,4 +1,4 @@
-import { Location } from "../ILocationService";
+import { Location } from "../interfaces/ILocationService";
 import {
   IPlaceSearchService,
   Place,

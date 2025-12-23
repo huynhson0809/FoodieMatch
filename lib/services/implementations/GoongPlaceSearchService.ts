@@ -1,9 +1,9 @@
 import {
   IPlaceSearchService,
-  Location,
   Place,
   SearchOptions,
 } from "../interfaces/IPlaceSearchService";
+import { Location } from "../interfaces/ILocationService";
 
 export class GoongPlaceSearchService implements IPlaceSearchService {
   private apiKey: string;

@@ -166,4 +166,38 @@ export class VietBanDoProvider implements IMapProvider {
       </div>
     `;
   }
+
+  on(event: string, callback: () => void): void {
+    // VietBanDo might not support generic 'on', or use different event names
+    // Placeholder implementation
+  }
+
+  getBounds(): {
+    north: number;
+    south: number;
+    east: number;
+    west: number;
+  } | null {
+    if (!this.map) return null;
+    // @ts-ignore
+    const bounds = this.map.getBounds();
+    // @ts-ignore
+    const notify = bounds ? bounds.getNorthEast() : null;
+    // @ts-ignore
+    const sw = bounds ? bounds.getSouthWest() : null;
+
+    if (notify && sw) {
+      return {
+        // @ts-ignore
+        north: notify.lat,
+        // @ts-ignore
+        south: sw.lat,
+        // @ts-ignore
+        east: notify.lng,
+        // @ts-ignore
+        west: sw.lng,
+      };
+    }
+    return null;
+  }
 }

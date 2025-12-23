@@ -36,6 +36,44 @@ export class OverpassPlaceSearchService implements IPlaceSearchService {
     }
   }
 
+  async searchByBounds(
+    minLat: number,
+    maxLat: number,
+    minLng: number,
+    maxLng: number,
+    limit?: number
+  ): Promise<Place[]> {
+    try {
+      // Overpass BBox: (south, west, north, east)
+      // south=minLat, west=minLng, north=maxLat, east=maxLng
+      const query = `
+        [out:json];
+        (
+          node["amenity"~"restaurant|cafe|fast_food|bar"]["name"](${minLat},${minLng},${maxLat},${maxLng});
+        );
+        out body;
+      `;
+
+      const response = await fetch(
+        `${this.OVERPASS_URL}?data=${encodeURIComponent(query)}`
+      );
+      const data = await response.json();
+
+      let places = data.elements
+        .filter((el: any) => el.tags && el.tags.name)
+        .map((el: any) => this.mapToPlace(el));
+
+      if (limit) {
+        places = places.slice(0, limit);
+      }
+
+      return places;
+    } catch (error) {
+      console.error("Overpass bounds search error:", error);
+      return [];
+    }
+  }
+
   async findRandomPlace(
     location: Location,
     options: SearchOptions
