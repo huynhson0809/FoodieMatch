@@ -12,7 +12,7 @@ export default function HomePage() {
 
       <main className="pb-16">
         <HeroSection />
-        <RandomGenerator />
+        {/* <RandomGenerator /> */}
         {/* <RestaurantGrid searchQuery="" category={null} /> */}
       </main>
     </div>

@@ -23,6 +23,8 @@ export function RandomGenerator() {
   const [showMap, setShowMap] = useState(false);
   const [randomPlace, setRandomPlace] = useState<Place | null>(null);
   const [filter, setFilter] = useState<SearchFilter>("all");
+  const [distance, setDistance] = useState<"near" | "far">("near");
+  const [history, setHistory] = useState<string[]>([]);
   console.log("randomPlace", randomPlace);
 
   // Sử dụng global context
@@ -36,6 +38,8 @@ export function RandomGenerator() {
     clearPlaces,
   } = useLocation();
 
+  // Duplicate state removed from here (lines 41)
+
   const handleSurpriseMe = async () => {
     setIsSpinning(true);
     setShowMap(false);
@@ -47,10 +51,15 @@ export function RandomGenerator() {
 
     // Tìm quán với progressive radius và filter
     try {
-      const place = await findFoodNearbyWithRetry(filter);
+      // Pass stored history as excluded IDs
+      const excludeIds = history.join(",");
+      const place = await findFoodNearbyWithRetry(filter, distance, excludeIds);
+
       if (place) {
         setRandomPlace(place);
         setShowMap(true);
+        // Add to history to avoid repeating
+        setHistory((prev) => [...prev, place.id]);
       }
     } catch (error) {
       console.error(error);
@@ -140,6 +149,33 @@ export function RandomGenerator() {
             </button>
           </div>
 
+          {/* Distance Toggle */}
+          <div className="flex items-center justify-center gap-2 mb-8">
+            <span className="text-sm font-medium text-muted-foreground mr-2">
+              Khoảng cách:
+            </span>
+            <button
+              onClick={() => setDistance("near")}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                distance === "near"
+                  ? "bg-blue-600 text-white"
+                  : "bg-muted text-muted-foreground hover:bg-muted/80"
+              }`}
+            >
+              Gần (≤ 5km)
+            </button>
+            <button
+              onClick={() => setDistance("far")}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                distance === "far"
+                  ? "bg-blue-600 text-white"
+                  : "bg-muted text-muted-foreground hover:bg-muted/80"
+              }`}
+            >
+              Xa ({">"} 5km)
+            </button>
+          </div>
+
           {/* Searching indicator với radius */}
           {(isSearchingPlaces || isSpinning) && (
             <div className="mb-8 space-y-2">
@@ -175,24 +211,58 @@ export function RandomGenerator() {
                 </p>
               )}
 
+              {/* Rating & Reviews */}
+              {(randomPlace.rating || randomPlace.distance) && (
+                <div className="flex flex-wrap items-center justify-center gap-4 mb-4 text-sm">
+                  {randomPlace.rating && (
+                    <div className="flex items-center gap-1 text-yellow-500 font-bold bg-yellow-50 px-3 py-1 rounded-full">
+                      <span>⭐</span>
+                      <span>{randomPlace.rating}</span>
+                      <span className="text-muted-foreground font-normal">
+                        ({randomPlace.reviewCount || 0})
+                      </span>
+                    </div>
+                  )}
+                  {randomPlace.distance && (
+                    <div className="flex items-center gap-1 text-blue-600 bg-blue-50 px-3 py-1 rounded-full font-medium">
+                      <Navigation className="w-3 h-3" />
+                      <span>{randomPlace.distance.toFixed(1)} km</span>
+                    </div>
+                  )}
+                </div>
+              )}
+
               {/* Địa chỉ */}
               {randomPlace.address && (
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-sm text-muted-foreground mb-6">
                   📍 {randomPlace.address}
                 </p>
               )}
 
               {/* Nút chỉ đường */}
-              <a
-                href={getDirectionsLink(randomPlace.lat, randomPlace.lon)}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-full text-sm font-semibold hover:bg-blue-600 transition-colors"
-              >
-                <Navigation className="w-4 h-4" />
-                Chỉ đường ngay
-                <ExternalLink className="w-4 h-4" />
-              </a>
+              {/* Nút chỉ đường */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a
+                  href={randomPlace.googleMapsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 w-full sm:w-auto"
+                >
+                  <Navigation className="w-5 h-5" />
+                  Xem trên Google Maps
+                  <ExternalLink className="w-4 h-4 ml-1 opacity-70" />
+                </a>
+
+                <a
+                  href={getDirectionsLink(randomPlace.lat, randomPlace.lng)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-secondary text-secondary-foreground rounded-full font-semibold hover:bg-secondary/80 transition-all w-full sm:w-auto border-2 border-border"
+                >
+                  <Navigation className="w-5 h-5" />
+                  Chỉ đường
+                </a>
+              </div>
             </div>
           )}
 

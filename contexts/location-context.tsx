@@ -15,12 +15,17 @@ export type SearchFilter = "food" | "drink" | "all";
 export interface Place {
   id: string; // Unique identifier (lat-lon combo)
   lat: number;
-  lon: number;
+  lng: number;
   name: string;
   address?: string;
   cuisine?: string;
   emoji?: string;
   tags?: Record<string, string>;
+  // New fields
+  rating?: number;
+  reviewCount?: number;
+  distance?: number;
+  googleMapsUrl?: string; // or construct it client side
 }
 
 interface LocationContextType {
@@ -48,6 +53,12 @@ interface LocationContextType {
     distance?: "near" | "far",
     excludePlaceId?: string
   ) => Promise<Place | null>;
+  searchInBounds: (
+    minLat: number,
+    maxLat: number,
+    minLng: number,
+    maxLng: number
+  ) => Promise<void>;
   clearPlaces: () => void;
 }
 
@@ -105,26 +116,6 @@ async function getDetailedLocation(
     console.error("Error fetching location details:", error);
     return null;
   }
-}
-
-// Tính khoảng cách giữa 2 điểm (Haversine formula)
-function calculateDistance(
-  lat1: number,
-  lon1: number,
-  lat2: number,
-  lon2: number
-): number {
-  const R = 6371; // km
-  const dLat = ((lat2 - lat1) * Math.PI) / 180;
-  const dLon = ((lon2 - lon1) * Math.PI) / 180;
-  const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos((lat1 * Math.PI) / 180) *
-      Math.cos((lat2 * Math.PI) / 180) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  return R * c;
 }
 
 // Emoji cho các loại quán ăn - dùng làm fallback thay vì ảnh
@@ -287,7 +278,7 @@ export function LocationProvider({ children }: LocationProviderProps) {
                 return {
                   id: `${el.lat}-${el.lon}`,
                   lat: el.lat,
-                  lon: el.lon,
+                  lng: el.lon,
                   name: el.tags.name,
                   address:
                     addressParts.length > 0
@@ -318,174 +309,81 @@ export function LocationProvider({ children }: LocationProviderProps) {
     async (
       filter: SearchFilter = "all",
       distance: "near" | "far" = "near",
-      excludePlaceId?: string // ID quán cần loại trừ (tránh lặp lại)
+      excludePlaceId?: string
     ): Promise<Place | null> => {
       if (!location) {
         throw new Error("Chưa lấy được vị trí của bạn!");
       }
 
-      // Radius levels tùy theo distance
-      // near: 500m -> 5km
-      // far: 5km -> 15km
+      // Radius levels
       const radiusLevels =
         distance === "near"
-          ? [500, 1000, 1500, 2000, 3000, 4000, 5000]
-          : [5000, 7000, 10000, 12000, 15000];
+          ? [1000, 2000, 3000, 5000, 10000]
+          : [10000, 15000, 20000, 25000];
+
+      const [lat, lng] = location;
 
       for (const radius of radiusLevels) {
         setSearchRadius(radius);
 
         try {
-          const [lat, lng] = location;
+          // If distance is 'far', we want minDistance to be 5km (5000m)
+          const minDist = distance === "far" ? 5000 : 0;
 
-          // Build query based on filter
-          let queryFilters = "";
-          if (filter === "food") {
-            queryFilters = `
-              node["amenity"="restaurant"](around:${radius},${lat},${lng});
-              node["amenity"="fast_food"](around:${radius},${lat},${lng});
-            `;
-          } else if (filter === "drink") {
-            queryFilters = `
-              node["amenity"="cafe"](around:${radius},${lat},${lng});
-              node["amenity"="bar"](around:${radius},${lat},${lng});
-              node["amenity"="pub"](around:${radius},${lat},${lng});
-              node["shop"="coffee"](around:${radius},${lat},${lng});
-              node["shop"="tea"](around:${radius},${lat},${lng});
-            `;
-          } else {
-            // all
-            queryFilters = `
-              node["amenity"="restaurant"](around:${radius},${lat},${lng});
-              node["amenity"="cafe"](around:${radius},${lat},${lng});
-              node["amenity"="fast_food"](around:${radius},${lat},${lng});
-              node["amenity"="bar"](around:${radius},${lat},${lng});
-            `;
+          const params = new URLSearchParams({
+            lat: lat.toString(),
+            lng: lng.toString(),
+            radius: radius.toString(),
+            minDistance: minDist.toString(),
+            filter: filter,
+          });
+
+          if (excludePlaceId) {
+            params.append("excludeIds", excludePlaceId);
           }
-
-          const query = `
-          [out:json];
-          (
-            ${queryFilters}
-          );
-          out body;
-        `;
 
           const response = await fetch(
-            `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(
-              query
-            )}`
+            `/api/places/random?${params.toString()}`
           );
+
+          if (!response.ok) {
+            throw new Error("Lỗi kết nối server");
+          }
+
           const data = await response.json();
 
-          let validElements = data.elements.filter(
-            (el: { tags?: { name?: string } }) => el.tags && el.tags.name
-          );
-
-          // Filter theo khoảng cách thực tế
-          if (validElements.length > 0) {
-            validElements = validElements.filter(
-              (el: { lat: number; lon: number }) => {
-                const dist = calculateDistance(lat, lng, el.lat, el.lon);
-                if (distance === "near") {
-                  return dist <= 5; // Chỉ lấy quán trong vòng 5km
-                } else {
-                  return dist > 5; // Chỉ lấy quán trên 5km
-                }
-              }
-            );
-          }
-
-          if (validElements.length > 0) {
-            // Loai trừ quán đã chọn trước đó
-            if (excludePlaceId) {
-              validElements = validElements.filter(
-                (el: { lat: number; lon: number }) =>
-                  `${el.lat}-${el.lon}` !== excludePlaceId
-              );
-            }
-          }
-
-          if (validElements.length > 0) {
-            // Random chọn 1 quán từ danh sách
-            const randomEl =
-              validElements[Math.floor(Math.random() * validElements.length)];
-            const cuisine = randomEl.tags.cuisine || randomEl.tags.amenity;
-            const emoji = getCuisineEmoji(cuisine, randomEl.tags.amenity);
-
-            // Tạo ID duy nhất cho quán
-            const placeId = `${randomEl.lat}-${randomEl.lon}`;
-
-            // Lấy địa chỉ đầy đủ bằng reverse geocoding từ tọa độ quán
-            let fullAddress: string | undefined;
-            try {
-              const geoResponse = await fetch(
-                `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${randomEl.lat}&longitude=${randomEl.lon}&localityLanguage=vi`
-              );
-              if (geoResponse.ok) {
-                const geoData = await geoResponse.json();
-                const parts = [
-                  geoData.locality,
-                  geoData.city,
-                  geoData.principalSubdivision,
-                ].filter(Boolean);
-                if (parts.length > 0) {
-                  fullAddress = parts.join(", ");
-                }
-              }
-            } catch (e) {
-              console.error("Error getting place address:", e);
-            }
-
-            // Fallback: dùng tags nếu reverse geocoding fail
-            if (!fullAddress) {
-              const addressParts = [
-                randomEl.tags["addr:housenumber"],
-                randomEl.tags["addr:street"],
-                randomEl.tags["addr:city"],
-              ].filter(Boolean);
-              fullAddress =
-                addressParts.length > 0 ? addressParts.join(", ") : undefined;
-            }
-
-            const place: Place = {
-              id: placeId,
-              lat: randomEl.lat,
-              lon: randomEl.lon,
-              name: randomEl.tags.name,
-              address: fullAddress,
-              cuisine: cuisine,
-              emoji: emoji,
-              tags: randomEl.tags,
+          if (data.place) {
+            const p = data.place;
+            // Map backend Place to frontend Place if needed (mostly same structure)
+            const mappedPlace: Place = {
+              id: p.id,
+              name: p.name,
+              lat: p.lat,
+              lng: p.lng, // BE uses lng, FE uses lng
+              address: p.address,
+              cuisine: p.cuisine || "restaurant",
+              emoji: p.emoji || "🍽️",
+              tags: p.tags,
+              rating: p.rating,
+              reviewCount: p.reviewCount,
+              distance: p.distance,
+              googleMapsUrl: p.externalId,
             };
 
-            setPlaces([place]);
-            return place;
+            setPlaces([mappedPlace]); // Update context state
+            return mappedPlace;
           }
-
-          // Chưa tìm thấy, tiếp tục với radius lớn hơn
-          console.log(`Không tìm thấy quán trong ${radius}m, đang mở rộng...`);
         } catch (error) {
           console.error(`Error at radius ${radius}:`, error);
         }
       }
 
-      throw new Error("Không tìm thấy quán ăn nào trong bán kính 10km!");
+      throw new Error("Không tìm thấy quán ăn nào trong bán kính tìm kiếm!");
     },
     [location]
   );
 
-  // Helper function to remove Vietnamese accents for accent-insensitive search
-  const removeAccents = (str: string): string => {
-    return str
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/đ/g, "d")
-      .replace(/Đ/g, "D")
-      .toLowerCase();
-  };
-
-  // Tìm quán theo keyword (tên món hoặc loại quán)
+  // Tìm quán theo keyword (tên món hoặc loại quán) - API First
   const searchByKeyword = useCallback(
     async (
       keyword: string,
@@ -503,142 +401,219 @@ export function LocationProvider({ children }: LocationProviderProps) {
       // Radius levels tùy theo distance
       const radiusLevels =
         distance === "near"
-          ? [500, 1000, 1500, 2000, 3000, 4000, 5000]
-          : [5000, 7000, 10000, 12000, 15000];
+          ? [1000, 2000, 3000, 5000, 10000]
+          : [5000, 10000, 15000, 20000];
 
-      // Normalize keyword to remove accents for comparison
-      const normalizedKeyword = removeAccents(keyword);
+      const [lat, lng] = location;
 
+      // 1. Try searching in Database (via API) First
       for (const radius of radiusLevels) {
         setSearchRadius(radius);
 
         try {
-          const [lat, lng] = location;
+          const minDist = distance === "far" ? 5000 : 0;
+          const params = new URLSearchParams({
+            lat: lat.toString(),
+            lng: lng.toString(),
+            radius: radius.toString(),
+            minDistance: minDist.toString(),
+            keyword: keyword.trim(),
+          });
 
-          // Query để lấy TẤT CẢ quán ăn trong bán kính
-          // Sau đó filter trên client-side với accent-insensitive matching
-          const query = `
-          [out:json];
-          (
-            node["amenity"~"restaurant|cafe|fast_food|bar"]["name"]
-              (around:${radius},${lat},${lng});
+          if (excludePlaceId) {
+            params.append("excludeIds", excludePlaceId);
+          }
+
+          const response = await fetch(
+            `/api/places/random?${params.toString()}`
           );
-          out body;
-        `;
+          if (response.ok) {
+            const data = await response.json();
+            if (data.place) {
+              const p = data.place;
+              const mappedPlace: Place = {
+                id: p.id,
+                name: p.name,
+                lat: p.lat,
+                lng: p.lng,
+                address: p.address,
+                cuisine: p.cuisine || "restaurant",
+                emoji: p.emoji || "🍽️",
+                tags: p.tags,
+                rating: p.rating,
+                reviewCount: p.reviewCount,
+                distance: p.distance,
+                googleMapsUrl: p.externalId,
+              };
+              setPlaces([mappedPlace]);
+              return mappedPlace;
+            }
+          }
+        } catch (error) {
+          // Ignore API error and try next radius or fallback
+          console.warn("DB Search failed for radius " + radius, error);
+        }
+      }
+
+      // 2. Fallback to Overpass/Goong if DB found nothing
+
+      // Normalize keyword
+      const normalize = (str: string) =>
+        str
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/đ/g, "d")
+          .replace(/Đ/g, "D")
+          .toLowerCase();
+      const normalizedKeyword = normalize(keyword);
+
+      for (const radius of radiusLevels) {
+        setSearchRadius(radius);
+        try {
+          const query = `
+            [out:json];
+            (
+              node["amenity"~"restaurant|cafe|fast_food|bar"]["name"]
+                (around:${radius},${lat},${lng});
+            );
+            out body;
+          `;
 
           const response = await fetch(
             `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(
               query
             )}`
           );
+          if (!response.ok) continue;
+
           const data = await response.json();
+          let validElements = data.elements.filter((el: any) => {
+            if (!el.tags?.name) return false;
+            return normalize(el.tags.name).includes(normalizedKeyword);
+          });
 
-          // Filter theo keyword với accent-insensitive matching
-          let validElements = data.elements.filter(
-            (el: { tags?: { name?: string; cuisine?: string } }) => {
-              if (!el.tags || !el.tags.name) return false;
-
-              // Normalize tên quán và cuisine để so sánh
-              const normalizedName = removeAccents(el.tags.name);
-              const normalizedCuisine = el.tags.cuisine
-                ? removeAccents(el.tags.cuisine)
-                : "";
-
-              // Match nếu keyword có trong tên hoặc cuisine
-              return (
-                normalizedName.includes(normalizedKeyword) ||
-                normalizedCuisine.includes(normalizedKeyword)
-              );
-            }
-          );
-
-          // Filter theo khoảng cách thực tế
+          // Filter distance
           if (validElements.length > 0) {
-            validElements = validElements.filter(
-              (el: { lat: number; lon: number }) => {
-                const dist = calculateDistance(lat, lng, el.lat, el.lon);
-                if (distance === "near") {
-                  return dist <= 5;
-                } else {
-                  return dist > 5;
-                }
-              }
-            );
-          }
+            validElements = validElements.filter((el: any) => {
+              const R = 6371e3; // meters
+              const φ1 = (lat * Math.PI) / 180;
+              const φ2 = (el.lat * Math.PI) / 180;
+              const Δφ = ((el.lat - lat) * Math.PI) / 180;
+              const Δλ = ((el.lon - lng) * Math.PI) / 180;
+              const a =
+                Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+                Math.cos(φ1) *
+                  Math.cos(φ2) *
+                  Math.sin(Δλ / 2) *
+                  Math.sin(Δλ / 2);
+              const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+              const d = R * c; // in meters
 
-          // Loại trừ quán đã chọn trước đó
-          if (validElements.length > 0 && excludePlaceId) {
-            validElements = validElements.filter(
-              (el: { lat: number; lon: number }) =>
-                `${el.lat}-${el.lon}` !== excludePlaceId
-            );
+              if (distance === "near") return d <= 5000;
+              return d > 5000;
+            });
           }
 
           if (validElements.length > 0) {
-            // Random chọn 1 quán từ danh sách
             const randomEl =
               validElements[Math.floor(Math.random() * validElements.length)];
-            const cuisine = randomEl.tags.cuisine || randomEl.tags.amenity;
-            const emoji = getCuisineEmoji(cuisine, randomEl.tags.amenity);
-            const placeId = `${randomEl.lat}-${randomEl.lon}`;
 
-            // Lấy địa chỉ đầy đủ
-            let fullAddress: string | undefined;
-            try {
-              const geoResponse = await fetch(
-                `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${randomEl.lat}&longitude=${randomEl.lon}&localityLanguage=vi`
-              );
-              if (geoResponse.ok) {
-                const geoData = await geoResponse.json();
-                const parts = [
-                  geoData.locality,
-                  geoData.city,
-                  geoData.principalSubdivision,
-                ].filter(Boolean);
-                if (parts.length > 0) {
-                  fullAddress = parts.join(", ");
-                }
-              }
-            } catch (e) {
-              console.error("Error getting place address:", e);
-            }
-
-            if (!fullAddress) {
-              const addressParts = [
-                randomEl.tags["addr:housenumber"],
-                randomEl.tags["addr:street"],
-                randomEl.tags["addr:city"],
-              ].filter(Boolean);
-              fullAddress =
-                addressParts.length > 0 ? addressParts.join(", ") : undefined;
-            }
+            // Calculate distance for display
+            const R = 6371;
+            const dLat = ((randomEl.lat - lat) * Math.PI) / 180;
+            const dLon = ((randomEl.lon - lng) * Math.PI) / 180;
+            const a =
+              Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos((lat * Math.PI) / 180) *
+                Math.cos((randomEl.lat * Math.PI) / 180) *
+                Math.sin(dLon / 2) *
+                Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            const distKm = R * c;
 
             const place: Place = {
-              id: placeId,
+              id: `${randomEl.lat}-${randomEl.lon}`,
               lat: randomEl.lat,
-              lon: randomEl.lon,
+              lng: randomEl.lon,
               name: randomEl.tags.name,
-              address: fullAddress,
-              cuisine: cuisine,
-              emoji: emoji,
+              cuisine: randomEl.tags.cuisine || "restaurant",
+              emoji: "🍽️",
+              distance: distKm,
               tags: randomEl.tags,
             };
+
+            // Reverse geocode address (Simplified for brevity as fallback)
+            // We can skip heavy reverse geocode if needed, or add it back.
+            // Adding basic address from tags if available
+            const addr = [
+              randomEl.tags["addr:housenumber"],
+              randomEl.tags["addr:street"],
+            ]
+              .filter(Boolean)
+              .join(" ");
+            if (addr) place.address = addr;
 
             setPlaces([place]);
             return place;
           }
-
-          console.log(
-            `Không tìm thấy "${keyword}" trong ${radius}m, đang mở rộng...`
-          );
-        } catch (error) {
-          console.error(`Error at radius ${radius}:`, error);
+        } catch (e) {
+          console.error("Fallback search error", e);
         }
       }
 
       throw new Error(`Không tìm thấy quán nào phù hợp với "${keyword}"!`);
     },
     [location]
+  );
+
+  const searchInBounds = useCallback(
+    async (
+      minLat: number,
+      maxLat: number,
+      minLng: number,
+      maxLng: number
+    ): Promise<void> => {
+      setIsSearchingPlaces(true);
+      try {
+        const params = new URLSearchParams({
+          minLat: minLat.toString(),
+          maxLat: maxLat.toString(),
+          minLng: minLng.toString(),
+          maxLng: maxLng.toString(),
+          limit: "50", // Fetch reasonable amount
+        });
+
+        const response = await fetch(`/api/places/search?${params.toString()}`);
+        if (!response.ok) throw new Error("API call failed");
+
+        const data = await response.json();
+        if (data.places) {
+          // Map backend places to frontend places
+          const mappedPlaces: Place[] = data.places.map((p: any) => ({
+            id: p.id,
+            name: p.name,
+            lat: p.lat,
+            lng: p.lng,
+            address: p.address,
+            cuisine: p.cuisine || "restaurant",
+            emoji: p.emoji || "🍽️", // Should use reusable logic
+            photos: p.images || [],
+            rating: p.rating,
+            reviewCount: p.reviewCount,
+            externalId: p.externalId,
+            googleMapsUrl: p.externalId,
+          }));
+
+          // Deduplicate or replace? Replacing is cleaner for "Search This Area".
+          setPlaces(mappedPlaces);
+        }
+      } catch (error) {
+        console.error("Error searching in bounds:", error);
+      } finally {
+        setIsSearchingPlaces(false);
+      }
+    },
+    []
   );
 
   const clearPlaces = useCallback(() => {
@@ -658,6 +633,7 @@ export function LocationProvider({ children }: LocationProviderProps) {
     findFoodNearby,
     findFoodNearbyWithRetry,
     searchByKeyword,
+    searchInBounds,
     clearPlaces,
   };
 

@@ -8,7 +8,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-card/80 backdrop-blur-lg border-b border-border/40">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-4 z-50">
         <div className="flex items-center justify-between gap-4">
           {/* Cute Mascot Logo */}
           <div className="flex items-center gap-2 flex-shrink-0">

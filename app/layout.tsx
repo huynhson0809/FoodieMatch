@@ -42,8 +42,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${nunito.className} font-sans antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${nunito.className} font-sans antialiased`}
+        suppressHydrationWarning
+      >
         <Providers>{children}</Providers>
         <Analytics />
       </body>
